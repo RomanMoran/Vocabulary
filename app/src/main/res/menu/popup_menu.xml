@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+        <item
+            android:id="@+id/menu_on_add"
+            android:title="@string/on_add" />
+        <item
+            android:id="@+id/menu_on_learned"
+            android:title="@string/on_learned" />
+</menu>

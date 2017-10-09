@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tableLayout"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:stretchColumns="0,3"
+    >
+    <TableRow
+        android:id="@+id/tableRow"
+        android:background="#fff"
+        android:padding="@dimen/default_padding"
+        android:layout_margin="@dimen/padding_extra_micro"
+        >
+        <TextView
+            android:layout_span="2"
+            android:id="@+id/tvTranslatable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_span="2"
+            android:id="@+id/tvTranslated"
+            android:layout_marginLeft="@dimen/padding_extra_micro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_span="1"
+            android:id="@+id/date"
+            android:layout_marginLeft="@dimen/padding_extra_micro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </TableRow>
+
+
+</TableLayout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_statistic_learned"
+        android:title="@string/statistic_learn"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/menu_statistic_add"
+        android:title="@string/statistic_add"
+        android:visible="true"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/menu_on_add_date"
+        android:title="@string/on_add"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/menu_on_learned_date"
+        android:title="@string/on_learned"
+        app:showAsAction="never"/>
+    <item android:id="@+id/menu_sort"
+        android:title="@string/sort_reveal"
+        app:showAsAction="never"/>
+</menu>
