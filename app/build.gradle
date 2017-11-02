@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion;
     buildToolsVersion rootProject.ext.buildToolsVersion;
-    useLibrary 'org.apache.http.legacy'
     defaultConfig {
         applicationId "com.example.roman.vocabulary"
         minSdkVersion rootProject.ext.minSdkVersion;
@@ -13,6 +13,8 @@ android {
         versionName rootProject.ext.appVersionName;
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -74,12 +76,10 @@ dependencies {
     annotationProcessor 'org.parceler:parceler:1.1.6'
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
-    compile 'org.apache.httpcomponents:httpclient:4.5'
     compile 'com.github.rahatarmanahmed:circularprogressview:2.4.0'
 
-
-
-
-
+    compile 'com.google.firebase:firebase-core:11.4.2'                        // this line must be included to integrate with Firebase
+    compile 'com.google.firebase:firebase-messaging:11.4.2'                   // this line must be included to use FCM
+    compile 'com.google.firebase:firebase-database:11.4.2'
 
 }

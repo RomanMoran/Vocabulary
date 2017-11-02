@@ -4,7 +4,7 @@
 <item
     android:id="@+id/menu_edit"
     android:title="@string/edit"
-    app:showAsAction="always"
+    app:showAsAction="ifRoom"
     />
 <item
     android:id="@+id/menu_delete"
@@ -14,6 +14,11 @@
 <item
     android:id="@+id/menu_forgot"
     android:title="@string/forgot"
+    app:showAsAction="ifRoom"
+    />
+<item
+    android:id="@+id/menu_association"
+    android:title="@string/add_association"
     app:showAsAction="ifRoom"
     />
 </menu>

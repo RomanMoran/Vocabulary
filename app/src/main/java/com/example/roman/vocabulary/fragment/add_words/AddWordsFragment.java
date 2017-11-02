@@ -63,6 +63,8 @@ public class AddWordsFragment extends BaseFragment implements AddWordsMvp.View {
     EditText etTranslatable;
     @BindView(R.id.etTranslated)
     EditText etTranslated;
+    @BindView(R.id.etAssociation)
+    EditText etAssociation;
     @BindView(R.id.toolBar)
     Toolbar toolbar;
 
@@ -83,7 +85,7 @@ public class AddWordsFragment extends BaseFragment implements AddWordsMvp.View {
 
     private ApiClient apiClient = ApiClient.getInstance();
 
-    private String wordEn,wordRu;
+    private String wordEn,wordRu,wordAssociation;
 
     public ApiClient getApiClient() {
         return apiClient;
@@ -124,6 +126,7 @@ public class AddWordsFragment extends BaseFragment implements AddWordsMvp.View {
     void save() {
 
         wordEn = etTranslatable.getText().toString();
+        wordAssociation = etAssociation.getText().toString();
 
         if (wordEn.isEmpty()) {
             showToast(R.string.empty_en);
@@ -159,6 +162,7 @@ public class AddWordsFragment extends BaseFragment implements AddWordsMvp.View {
             Words word = new Words();
             word.setWordEn(wordEn);
             word.setWordRu(wordRu);
+            word.setAssociation(wordAssociation);
             Date currentTime = Calendar.getInstance().getTime();
             word.setDate(new SimpleDateFormat(Constants.OUTPUT_DATE).format(currentTime));
             DBHelper
@@ -168,14 +172,6 @@ public class AddWordsFragment extends BaseFragment implements AddWordsMvp.View {
             showToast(R.string.already_exist);
         }
     }
-
-
-
-  /*  public void onComplete(){
-        new Handler().postDelayed(() -> activity.setProgressIndicator(false), 2000);
-
-    }*/
-
 
     @OnClick({R.id.flipSearch, R.id.flipWrite})
     void flip() {

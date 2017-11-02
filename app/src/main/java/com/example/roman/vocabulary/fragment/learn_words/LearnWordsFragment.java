@@ -278,13 +278,13 @@ public class LearnWordsFragment extends BaseFragment implements BaseActivity.OnB
         rgLangs.setOnCheckedChangeListener((radioGroup, checkedId) -> {
             switch (checkedId) {
                 case R.id.rbEn:
-                    wordsAdapter = new LearnWordsAdapter("EN", selectedWords);
+                    wordsAdapter.setItems(selectedWords,"EN");
                     break;
                 case R.id.rbRu:
-                    wordsAdapter = new LearnWordsAdapter("RU", selectedWords);
+                    wordsAdapter.setItems(selectedWords,"RU");
                     break;
                 case R.id.rbRuEn:
-                    wordsAdapter = new LearnWordsAdapter("", selectedWords);
+                    wordsAdapter.setItems(selectedWords,"");
                     break;
             }
             rvWords.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
@@ -396,16 +396,18 @@ public class LearnWordsFragment extends BaseFragment implements BaseActivity.OnB
                 View view = activity.getLayoutInflater().inflate(R.layout.view_edit, (ViewGroup) getView(), false);
                 EditText etEng = ButterKnife.findById(view, R.id.etEng);
                 EditText etRus = ButterKnife.findById(view, R.id.etRus);
+                EditText etAssociation = ButterKnife.findById(view, R.id.etAssociation);
 
                 etEng.setText(word.getWordEn());
                 etRus.setText(word.getWordRu());
+                etAssociation.setText(word.getAssociation());
 
                 new SweetAlertDialog(activity, SweetAlertDialog.NORMAL_TYPE)
                         .setTitleText(getString(R.string.editable))
                         .setConfirmText(getString(R.string.dialog_ok))
                         .setCustomView(view)
                         .setConfirmClickListener(sweetAlertDialog -> {
-                            update(word.getId(), etEng.getText().toString(), etRus.getText().toString());
+                            update(word.getId(), etEng.getText().toString(), etRus.getText().toString(),etAssociation.getText().toString());
                             sweetAlertDialog.cancel();
                         })
                         .setCancelClickListener(SweetAlertDialog::dismissWithAnimation)
@@ -421,6 +423,20 @@ public class LearnWordsFragment extends BaseFragment implements BaseActivity.OnB
                 updateList();
                 showToast("Updated");
                 break;
+            case R.id.menu_association:
+                EditText editTextAssociation = new EditText(getContext());
+                editTextAssociation.setHint(R.string.add_association);
+                new SweetAlertDialog(activity, SweetAlertDialog.NORMAL_TYPE)
+                        .setTitleText(getString(R.string.add_association))
+                        .setConfirmText(getString(R.string.dialog_ok))
+                        .setCustomView(editTextAssociation)
+                        .setConfirmClickListener(sweetAlertDialog -> {
+                            update(word.getId(), word.getWordEn(), word.getWordRu(),editTextAssociation.getText().toString());
+                            sweetAlertDialog.cancel();
+                        })
+                        .setCancelClickListener(SweetAlertDialog::dismissWithAnimation)
+                        .show();
+                break;
 
         }
 
@@ -428,8 +444,13 @@ public class LearnWordsFragment extends BaseFragment implements BaseActivity.OnB
     }
 
 
-    private void update(long id, String en, String ru) {
-        DBHelper.update(id, en, ru);
+    private void update(long id, String en, String ru,String association) {
+        DBHelper.update(id, en, ru,association);
+        updateList();
+    }
+
+    private void updateAssociation(long id, String en, String ru,String association) {
+        DBHelper.update(id, en, ru,association);
         updateList();
     }
 

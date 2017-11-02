@@ -45,4 +45,6 @@
     <string name="on_learned">По дате выученности</string>
     <string name="searching">Идет поиск, подождите</string>
     <string name="forgot">Забыл</string>
+    <string name="input_association">Введите ассоциацию</string>
+    <string name="add_association">Добавление ассоциации</string>
 </resources>

@@ -12,4 +12,9 @@
         android:hint="@string/input_translate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/etAssociation"
+        android:hint="@string/input_association"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

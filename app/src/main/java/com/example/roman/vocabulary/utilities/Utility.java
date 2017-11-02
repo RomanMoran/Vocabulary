@@ -1,5 +1,8 @@
 package com.example.roman.vocabulary.utilities;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import com.example.roman.vocabulary.data.Words;
 import com.example.roman.vocabulary.data.lingualeo.Example;
 import com.example.roman.vocabulary.db_utility.DBHelper;
@@ -39,6 +42,25 @@ public class Utility {
                     wordsList.add(word);
                 });
         return wordsList;
+    }
+
+    public static void showToast(Context context, int textId) {
+        String text = null;
+        try {
+            text = context.getString(textId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
+        showToast(context, text);
+    }
+
+    public static void showToast(Context context, String text) {
+        try {
+            Toast.makeText(context, text, Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static String getNormalData(Date data){

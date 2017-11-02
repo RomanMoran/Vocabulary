@@ -45,6 +45,16 @@ public class Words extends BaseRXModel {
     private int reveal;
     @Column(name = "date_of_learned")
     private String dateOfLearned;
+    @Column
+    private String association;
+
+    public String getAssociation() {
+        return association!=null?association:"";
+    }
+
+    public void setAssociation(String association) {
+        this.association = association;
+    }
 
     public int getReveal() {
         return reveal;
@@ -108,10 +118,9 @@ public class Words extends BaseRXModel {
     public String getDate() {
         return date;
     }
-    
+
     public String getFormattedDate(){
         SimpleDateFormat output = new SimpleDateFormat(Constants.OUTPUT_DATE, Locale.getDefault());
-
         return date;
     }
 

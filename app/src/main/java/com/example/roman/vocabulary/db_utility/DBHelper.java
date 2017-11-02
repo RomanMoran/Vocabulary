@@ -1,8 +1,12 @@
 package com.example.roman.vocabulary.db_utility;
 
+import com.example.roman.vocabulary.VocabularyApp;
 import com.example.roman.vocabulary.data.Words;
 import com.example.roman.vocabulary.data.Words_Table;
+import com.example.roman.vocabulary.utilities.Utility;
 import com.raizlabs.android.dbflow.rx2.language.RXSQLite;
+import com.raizlabs.android.dbflow.sql.language.Case;
+import com.raizlabs.android.dbflow.sql.language.IConditional;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import java.util.GregorianCalendar;
@@ -34,12 +38,15 @@ public class DBHelper {
         return SQLite.select().from(Words.class).queryList().subList(index, index2);
     }
 
-    public static void update(long id, String en, String ru) {
+    public static void update(long id, String en, String ru,String association) {
         getWord(id)
                 .subscribe(words -> {
                     words.setWordRu(ru);
                     words.setWordEn(en);
-                    addWord(words).subscribe();
+                    words.setAssociation(association);
+                    addWord(words).subscribe(aBoolean -> {},throwable -> {
+                        Utility.showToast(VocabularyApp.getInstance().getApplicationContext(),throwable.toString());
+                    });
                 });
     }
 

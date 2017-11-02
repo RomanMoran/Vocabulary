@@ -33,6 +33,12 @@
                         android:hint="@string/input_word"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
+                    <EditText
+                        android:id="@+id/etAssociation"
+                        android:hint="@string/input_association"
+                        android:layout_below="@id/etTranslatable"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
                     <ViewFlipper
                         android:id="@+id/flipSearch"
                         android:layout_toRightOf="@id/etTranslatable"
@@ -70,7 +76,9 @@
             <ViewFlipper
                 android:id="@+id/content"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:measureAllChildren="false"
+                >
                 <include layout="@layout/write_words"/>
                 <include layout="@layout/search_words"/>
             </ViewFlipper>
